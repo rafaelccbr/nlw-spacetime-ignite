@@ -1,5 +1,5 @@
-import fastify from "fastify";
-import { PrismaClient } from "@prisma/client";
+import fastify from 'fastify'
+import { PrismaClient } from '@prisma/client'
 
 const app = fastify()
 const prisma = new PrismaClient()
@@ -7,13 +7,16 @@ const prisma = new PrismaClient()
 // HTTP Method; GET, PUT, PATCH, DELETE
 
 app.get('/users', async () => {
-    const users = await prisma.user.findMany()
+  const users = await prisma.user.findMany()
 
-    return users
+  return users
 })
 
-app.listen({
+app
+  .listen({
     port: 3333,
-}).then(() => {
+  })
+
+  .then(() => {
     console.log('🚀 HTTP server running on http://localhost:3333')
-})
+  })
